@@ -287,6 +287,9 @@ func ParseProperty(contentLine ContentLine) (*BaseProperty, error) {
 	r := &BaseProperty{
 		ICalParameters: map[string][]string{},
 	}
+	if contentLine[0:1] == "X-" {
+		return nil, nil
+	}
 	tokenPos := propertyIanaTokenReg.FindIndex([]byte(contentLine))
 	if tokenPos == nil {
 		return nil, nil
