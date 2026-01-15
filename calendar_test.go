@@ -24,6 +24,17 @@ var (
 	TestData embed.FS
 )
 
+func TestTrailingCruft(t *testing.T) {
+	calFile, err := TestData.Open("testdata/trailing-cruft/invite.ics")
+	if err != nil {
+		t.Errorf("read file: %v", err)
+	}
+	_, err = ParseCalendar(calFile)
+	if err != nil {
+		t.Errorf("parse calendar: %v", err)
+	}
+}
+
 func TestTimeParsing(t *testing.T) {
 	calFile, err := TestData.Open("testdata/timeparsing.ics")
 	if err != nil {
