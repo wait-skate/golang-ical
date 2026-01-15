@@ -699,7 +699,7 @@ func ParseCalendar(r io.Reader) (*Calendar, error) {
 		}
 		line, err := ParseProperty(*l)
 		if err != nil {
-			return nil, fmt.Errorf("parsing line %d: %w", ln, err)
+			return nil, fmt.Errorf("parsing line %d: %w `%v'", ln, err, line)
 		}
 		if line == nil {
 			return nil, fmt.Errorf("parsing calendar line %d", ln)
